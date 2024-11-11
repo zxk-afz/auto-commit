@@ -1,2 +1,2 @@
-# auto-commit
-useless commit bot
+# Auto-commit github program
+
