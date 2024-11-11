@@ -6,7 +6,7 @@ import random
 import datetime
 import time
 
-# Informations
+# Git info
 REPO_PATH = ''
 GIT_USERNAME = ''
 GIT_USER_EMAIL = ''
@@ -23,9 +23,14 @@ def execGitCommand(command):
 
 # Set git user details
 def setGitUser():
-    execGitCommand(f"git config user.name '{GIT_USERNAME}'")
-    execGitCommand(f"git config user.email '{GIT_USER_EMAIL}'")
+    global GIT_USERNAME, GIT_USER_EMAIL
 
+    GIT_USERNAME = input("Enter your Git username: ")
+    GIT_USER_EMAIL = input("Enter your Git email: ")
+
+    execGitCommand(f"git config user.name '{GIT_USERNAME}'")
+    execGitCommand(f"git config user.name '{GIT_USER_EMAIL}'")
+                   
 # Create random commit
 def createCommit(date):
     commitMessage = f'Random commit :)'
@@ -42,5 +47,26 @@ def createCommit(date):
     execGitCommand(f"git add {commitFile}")
     execGitCommand(f"git commit --date='{date.strftime('%Y-%m-%d %H:%M:%S')}' -m '{commitMessage}'")
 
-# Push to repo
+# Push to repo 
 
+def pushCommit():
+    execGitCommand(f"git push origin {BRANCH_NAME}")
+
+# Main function, fake commits 
+def fakeCommitBot():
+    setGitUser()
+
+    # Last 365 days
+    today = datetime.date.today()
+    for dayOffset in range(365):
+        commitDate = today - datetime.timedelta(days=dayOffset)
+        print(f"Creating commit for {commitDate}")
+        
+        createCommit(commitDate)
+        pushCommit()
+        
+        # Sleep to avoid spamming
+        time.sleep(random.randint(1, 5))
+
+if __name__ == "__main__":
+    fakeCommitBot()
