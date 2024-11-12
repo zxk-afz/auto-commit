@@ -2,14 +2,14 @@ import os
 import subprocess
 import random
 import datetime
-import time
 
 REPO_PATH = ''
 GIT_USERNAME = ''
 GIT_USER_EMAIL = ''
 BRANCH_NAME = ''
+DAY_TO_SKIP = 0
 
-# Execute Git commands
+# Execute Git command
 def exec_git_command(command):
     try:
         subprocess.check_call(command, shell=True, cwd=REPO_PATH)
@@ -18,7 +18,7 @@ def exec_git_command(command):
         return False
     return True
 
-# Set user info
+# Set Git users
 def set_git_user():
     global GIT_USERNAME, GIT_USER_EMAIL
 
@@ -31,9 +31,11 @@ def set_git_user():
 # Create commit
 def create_commit(date):
     commit_message = "Random commit :)"
+    # Random num of lines - for contribution :)
     num_lines = random.randint(1, 7)
     commit_file = os.path.join(REPO_PATH, "random_commit.txt")
 
+    # Write the lines
     with open(commit_file, "w") as f:
         for _ in range(num_lines):
             f.write(f"Random commit on {date.strftime('%Y-%m-%d')}\n")
@@ -41,27 +43,42 @@ def create_commit(date):
     exec_git_command(f"git add {commit_file}")
     exec_git_command(f"git commit --date='{date.strftime('%Y-%m-%d %H:%M:%S')}' -m '{commit_message}'")
 
-# Push commit
-def push_commit():
-    exec_git_command(f"git push origin {BRANCH_NAME}")
-
-#  Main function
+# Main function (fake auto-commit bot)
 def fake_commit_bot():
-    global REPO_PATH, BRANCH_NAME
+    global REPO_PATH, BRANCH_NAME, DAY_TO_SKIP
 
-    REPO_PATH = input("Enter the path to your Git repository: ")
+    REPO_PATH = input("Enter the path to your Git repo. e.g: /home/username/path/to/repo on Linux or Macos. e.g: C:\\Users\\username\\path\\to\\repo on windows: ")
     BRANCH_NAME = input("Enter the branch name to push to (default: main): ") or "main"
+    # Percentage of days to skip
+    DAY_TO_SKIP = input("Enter a percentage. e.g., 50 for 50% (default: 20%): ") or 20
+    try:
+        # To put it as percentage
+        percentage = int(DAY_TO_SKIP)
+        # Transalte to a num between 0-1
+        decimal_value = percentage / 100
+        print(f"The percantage of day with 0 commits is set: {decimal_value}")
+    except ValueError:
+        print("That's not a valid percentage.")
+
+    # Set user
     set_git_user()
 
     today = datetime.date.today()
     for day_offset in range(365):
         commit_date = today - datetime.timedelta(days=day_offset)
-        print(f"Creating commit for {commit_date}")
-
-        create_commit(commit_date)
-        push_commit()
         
-        time.sleep(random.randint(1, 5))
+        # 20% chance to skip this day
+        if random.random() < DAY_TO_SKIP:
+            continue
+        
+        # Choose a random number between 1 - 8 commit
+        num_commits = random.randint(1, 8)
+        for _ in range(num_commits):
+            create_commit(commit_date)
+
+    print("Pushing all commits...")
+    exec_git_command(f"git push origin {BRANCH_NAME}")
+    print("Finished pushing all the commits, thank me later ;)")
 
 if __name__ == "__main__":
     fake_commit_bot()
