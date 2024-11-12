@@ -91,4 +91,4 @@ if __name__ == "__main__":
     try:
         fake_commit_bot()
     except KeyboardInterrupt:
-        print("\n\n\nProgram was cancelled :(")
+        print("\n\nProgram was cancelled :(")
