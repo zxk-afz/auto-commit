@@ -47,7 +47,7 @@ def create_commit(date):
 def fake_commit_bot():
     global REPO_PATH, BRANCH_NAME, DAY_TO_SKIP
 
-    REPO_PATH = input("Enter the path to your Git repo. e.g: /home/username/path/to/repo on Linux or Macos. e.g: C:\\Users\\username\\path\\to\\repo on windows: ")
+    REPO_PATH = input("Enter the path to your Git repo. (e.g: /home/username/path/to/repo): ")
     BRANCH_NAME = input("Enter the branch name to push to (default: main): ") or "main"
     # Percentage of days to skip
     DAY_TO_SKIP = input("Enter a percentage. e.g., 50 for 50% (default: 20%): ") or 20
