@@ -50,7 +50,7 @@ def fake_commit_bot():
     REPO_PATH = input("Enter the path to your Git repo. (e.g: /home/username/path/to/repo): ")
     BRANCH_NAME = input("Enter the branch name to push to (default: main): ") or "main"
     # Percentage of days to skip
-    DAY_TO_SKIP = input("Enter a percentage. e.g., 50 for 50% (default: 20%): ") or 20
+    DAY_TO_SKIP = input("Enter a percentage of day to skip. e.g., 50 for 50% (default: 20%): ") or 20
     try:
         # To put it as percentage
         percentage = int(DAY_TO_SKIP)
