@@ -1,13 +1,13 @@
 
 # Auto-commit Github program
 
-This Python script automates the creation of a fake commit history in a Git repository to simulate daily contributions over the past year. It is ideal for testing, learning, or demonstrating GitHub profile activity. EDUCATIONAL PURPOSE ONLY.
+This Python script automates the creation of a fake commit history in a Git repository. ***EDUCATIONAL PURPOSE ONLY***.
 
 ## Features
 
 - **Daily Random Commit Generation**: The script creates a random number of commits for each of the last 365 days, creating a consistent (kinda) contribution history.
 - **Interactive User Setup**: The program prompts users for their Git username, email, repository location, and branch name.
-- **Automatic Push to GitHub**: Each generated commit is pushed to the specified GitHub repository branch, *updating the contribution graph!!!!*.
+- **Automatic Push to GitHub**: Each generated commit is pushed to the specified GitHub repository branch, *updating the contribution graph!!!!*. AND IT LOOKS ORGANIC!
 
 
 ## Requirements
@@ -17,13 +17,9 @@ This Python script automates the creation of a fake commit history in a Git repo
 - **Python modules**: `os` `subprocess` `random` `datetime`
 ## Usage
 
-- **1. Clone or Download** this script to your local machine.
-- **2. Navigate** to the directory containing the script.
-- **3. Run the program** using the command **below**:
+- *# Auto-commit github program
 
-```bash
-python auto_commit_bot.py
-```
+
 ### Interaction
 
 ```bash
