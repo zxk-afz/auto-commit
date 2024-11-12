@@ -20,7 +20,7 @@ This Python script automates the creation of a fake commit history in a Git repo
 ## Usage
 
 1. **Clone or Download** this script to your local machine.
-2. **Have a Github repo** ready to be auto-commited.
+2. **Create a Github repo** ready to be auto-commited.
 3. **Navigate** to the directory containing the script.
 4. **Run the program** using the command below:
 
@@ -40,6 +40,9 @@ The percentage of days with 0 commits is set: 30%
 
 Enter your Git username: your-username
 
-Enter your Git email: your-email@example.comclear
-
+Enter your Git email: your-email@example.com
 ```
+## Remove contributions
+
+1. **Delete repo** go in github and delete repo.
+2. **Delete the copy repo** remove the cloned repo.
