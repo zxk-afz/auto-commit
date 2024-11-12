@@ -7,7 +7,7 @@ REPO_PATH = ''
 GIT_USERNAME = ''
 GIT_USER_EMAIL = ''
 BRANCH_NAME = ''
-DAY_TO_SKIP = 0
+DAY_TO_SKIP = 0.2  # Default value as float
 
 # Execute Git command
 def exec_git_command(command):
@@ -50,28 +50,27 @@ def fake_commit_bot():
     REPO_PATH = input("Enter the path to your Git repo. (e.g: /home/username/path/to/repo): ")
     BRANCH_NAME = input("Enter the branch name to push to (default: main): ") or "main"
     # Percentage of days to skip
-    DAY_TO_SKIP = input("Enter a percentage of day to skip. e.g., 50 for 50% (default: 20%): ") or 20
+    DAY_TO_SKIP = input("Enter a percentage of days to skip. e.g., 50 for 50% (default: 20%): ") or 20
+    
     try:
-        # To put it as percentage
-        percentage = int(DAY_TO_SKIP)
-        # Transalte to a num between 0-1
-        decimal_value = percentage / 100
-        print(f"The percantage of day with 0 commits is set: {decimal_value}")
+        # Convert to a float
+        DAY_TO_SKIP = float(DAY_TO_SKIP) / 100  # Convert to a decimal value between 0 and 1
+        print(f"The percentage of days with 0 commits is set: {DAY_TO_SKIP * 100}%")
     except ValueError:
         print("That's not a valid percentage.")
 
-    # Set user
+    # Set Git user info
     set_git_user()
 
     today = datetime.date.today()
     for day_offset in range(365):
         commit_date = today - datetime.timedelta(days=day_offset)
         
-        # 20% chance to skip this day
+        # Skip days
         if random.random() < DAY_TO_SKIP:
             continue
         
-        # Choose a random number between 1 - 8 commit
+        # Choose random number between 1 - 8 commits
         num_commits = random.randint(1, 8)
         for _ in range(num_commits):
             create_commit(commit_date)
