@@ -17,9 +17,14 @@ This Python script automates the creation of a fake commit history in a Git repo
 - **Python modules**: `os` `subprocess` `random` `datetime`
 ## Usage
 
-- *# Auto-commit github program
+1. **Clone or Download** this script to your local machine.
+2. **Have a Github repo** ready to be auto-commited.
+3. **Navigate** to the directory containing the script.
+4. **Run the program** using the command below:
 
-
+```bash
+python auto_commit_bot.py
+```
 ### Interaction
 
 ```bash
