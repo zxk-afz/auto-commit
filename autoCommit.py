@@ -7,13 +7,17 @@ REPO_PATH = ''
 GIT_USERNAME = ''
 GIT_USER_EMAIL = ''
 BRANCH_NAME = ''
-DAY_TO_SKIP = 0.2  # Default value as float
+DAY_TO_SKIP = 0.2
 
 # Execute Git command
 def exec_git_command(command):
     try:
+        print(f"Executing command: {command} in {REPO_PATH}")
         subprocess.check_call(command, shell=True, cwd=REPO_PATH)
     except subprocess.CalledProcessError as e:
+        print(f"Error: {e}")
+        return False
+    except FileNotFoundError as e:
         print(f"Error: {e}")
         return False
     return True
@@ -24,6 +28,8 @@ def set_git_user():
 
     GIT_USERNAME = input("Enter your Git username: ")
     GIT_USER_EMAIL = input("Enter your Git email: ")
+
+    print(f"Setting Git user for repo at: {REPO_PATH}")
 
     exec_git_command(f"git config user.name '{GIT_USERNAME}'")
     exec_git_command(f"git config user.email '{GIT_USER_EMAIL}'")
@@ -49,12 +55,14 @@ def fake_commit_bot():
 
     REPO_PATH = input("Enter the path to your Git repo. (e.g: /home/username/path/to/repo): ")
     BRANCH_NAME = input("Enter the branch name to push to (default: main): ") or "main"
+
+    print(f"Repository path: {REPO_PATH}")
     # Percentage of days to skip
     DAY_TO_SKIP = input("Enter a percentage of days to skip. e.g., 50 for 50% (default: 20): ") or 20
     
     try:
         # Convert to a float
-        DAY_TO_SKIP = float(DAY_TO_SKIP) / 100  # Convert to a decimal value between 0 and 1
+        DAY_TO_SKIP = float(DAY_TO_SKIP) / 100  # Convert to value between 0 and 1
         print(f"The percentage of days with 0 commits is set: {DAY_TO_SKIP * 100}%")
     except ValueError:
         print("That's not a valid percentage.")
@@ -83,4 +91,4 @@ if __name__ == "__main__":
     try:
         fake_commit_bot()
     except KeyboardInterrupt:
-        print("\nProgram was cancelled :(")
+        print("\n\n\nProgram was cancelled :(")

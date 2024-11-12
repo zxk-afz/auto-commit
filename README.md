@@ -32,7 +32,7 @@ python auto_commit_bot.py
 ```bash
 Enter the path to your Git repo. (e.g., /home/username/path/to/repo): /home/user/my-repo
 
-Enter the branch name to push to (default: main): 
+Enter the branch name to push to (default: main): main
 
 Enter a percentage of days to skip. e.g., 50 = 50% (default: 20): 30
 
@@ -40,5 +40,6 @@ The percentage of days with 0 commits is set: 30%
 
 Enter your Git username: your-username
 
-Enter your Git email: your-email@example.com
+Enter your Git email: your-email@example.comclear
+
 ```
