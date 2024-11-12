@@ -3,6 +3,8 @@
 
 This Python script automates the creation of a fake commit history in a Git repository. ***EDUCATIONAL PURPOSE ONLY***.
 
+![Alt text](Exemple.png)
+
 ## Features
 
 - **Daily Random Commit Generation**: The script creates a random number of commits for each of the last 365 days, creating a consistent (kinda) contribution history.
