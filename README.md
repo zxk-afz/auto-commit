@@ -34,7 +34,7 @@ Enter the path to your Git repo. (e.g., /home/username/path/to/repo): /home/user
 
 Enter the branch name to push to (default: main): 
 
-Enter a percentage of days to skip. e.g., 50 = 50% (default: 20%): 30
+Enter a percentage of days to skip. e.g., 50 = 50% (default: 20): 30
 
 The percentage of days with 0 commits is set: 30%
 
