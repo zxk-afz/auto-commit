@@ -81,4 +81,7 @@ def fake_commit_bot():
     print("Finished pushing all the commits, thank me later ;)")
 
 if __name__ == "__main__":
-    fake_commit_bot()
+    try:
+        fake_commit_bot()
+    except KeyboardInterrupt:
+        print("\nProgram was cancelled :(")
