@@ -85,7 +85,7 @@ def fake_commit_bot():
 
     print("Pushing all commits...")
     exec_git_command(f"git push origin {BRANCH_NAME}")
-    print("Finished pushing all the commits, thank me later ;)")
+    print("\nFinished pushing all the commits, thank me later ;)")
 
 if __name__ == "__main__":
     try:
