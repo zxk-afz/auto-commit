@@ -45,4 +45,4 @@ Enter your Git email: your-email@example.com
 ## Remove contributions
 
 1. **Delete repo** go in github and delete repo.
-2. **Delete the copy repo** remove the cloned repo.
+2. **Delete the copied repo** remove the cloned repo from your computer.
